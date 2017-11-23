@@ -24,7 +24,7 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/username"
-            android:hint="E-mail"
+            android:hint="Username"
             android:textColor="#000"
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"
