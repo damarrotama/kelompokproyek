@@ -1,0 +1,58 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:padding="40dp">
+
+        <ImageView
+            android:layout_width="280dp"
+            android:layout_height="120dp"
+            android:src="@drawable/proyek"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="0dp"
+            android:drawablePadding="5dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/username"
+            android:hint="E-mail"
+            android:textColor="#000"
+            android:paddingLeft="0dp"
+            android:drawablePadding="5dp"
+            android:textColorHint="#000"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/password"
+            android:hint="Password"
+            android:textColor="#000"
+            android:paddingLeft="0dp"
+            android:drawablePadding="5dp"
+            android:textColorHint="#000"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="MASUK"
+            android:id="@+id/button"
+            android:textColor="#ffffff"
+            android:background="#bf1e0c"
+            android:layout_gravity="center_horizontal"
+            android:onClick="checkLogin"/>
+
+
+    </LinearLayout>
+</ScrollView>
