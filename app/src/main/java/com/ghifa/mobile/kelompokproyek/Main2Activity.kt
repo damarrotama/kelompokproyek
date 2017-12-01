@@ -1,22 +1,36 @@
 package com.ghifa.mobile.kelompokproyek
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.android.synthetic.main.app_bar_main2.*
 
 class Main2Activity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    var session: SharedPreferences? = null
+
+    //var ceklogin;
+    //val ceklogin: SharedPreferences? =
+
+    //var session: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         setSupportActionBar(toolbar)
+
+        session = PreferenceManager.getDefaultSharedPreferences(this@Main2Activity)
+        //session = this.getSharedPreferences("is_login", 0)
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -73,7 +87,31 @@ class Main2Activity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             R.id.nav_share -> {
 
             }
-            R.id.nav_send -> {
+            R.id.nav_exit -> {
+
+                val simpleAlert = AlertDialog.Builder(this@Main2Activity).create()
+                simpleAlert.setTitle("Info")
+                simpleAlert.setMessage("Keluar dari aplikasi ?")
+
+                simpleAlert.setButton(AlertDialog.BUTTON_POSITIVE, "OK", {
+                    dialogInterface, i ->
+                    //Toast.makeText(applicationContext, "You clicked on OK", Toast.LENGTH_SHORT).show()
+
+                    //if (session!=null) {
+//                        val setSession = session.edit()
+//                        setSession.clear()
+//                        setSession.commit()
+                    //}
+
+
+                })
+
+                simpleAlert.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", {
+                    dialogInterface, i ->
+                    //Toast.makeText(applicationContext, "You clicked on NO", Toast.LENGTH_SHORT).show()
+                })
+
+                simpleAlert.show()
 
             }
         }
