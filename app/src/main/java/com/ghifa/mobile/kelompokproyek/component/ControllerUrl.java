@@ -20,7 +20,7 @@ public class ControllerUrl {
         setURL();
     }
     void setURL(){
-        this.URL = "http://192.168.151.2/paw/lowker/admpanel/api/";
+        this.URL = "http://192.168.1.87/paw/lowker/admpanel/api/";
     }
 
     public String getURLLogin(){

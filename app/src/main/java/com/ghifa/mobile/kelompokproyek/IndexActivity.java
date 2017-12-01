@@ -59,9 +59,9 @@ public class IndexActivity extends AppCompatActivity {
         Log.d("status_login", Integer.toString(login));
 
         if(login==link_url.IS_LOGIN) {
-//            Intent utama = new Intent(IndexActivity.this, Main2Activity.class);
-//            startActivity(utama);
-//            finish();
+            Intent utama = new Intent(IndexActivity.this, Main2Activity.class);
+            startActivity(utama);
+            finish();
             Log.d("status_session","sesion ditemukan");
         }else{
             Log.d("status_session","session not found");
@@ -76,7 +76,8 @@ public class IndexActivity extends AppCompatActivity {
         UserLoginTask(String username, String password, String token) {
             Fungsi generate = new Fungsi();
             mUsername = username;
-            mPassword = generate.MD5_Hash(password) + generate.MD5_Hash(username);
+            //mPassword = generate.MD5_Hash(password) + generate.MD5_Hash(username);
+            mPassword = password;
             mToken = token;
         }
 
@@ -92,16 +93,18 @@ public class IndexActivity extends AppCompatActivity {
 
             try {
 
-                HttpClient client = new HttpClient();
-                String json = client.setLoginJson(mUsername, mPassword,mToken);
+                HttpClient client   = new HttpClient();
+                String json         = client.setLoginJson(mUsername, mPassword,mToken);
                 String postResponse = client.doPostRequest(link_url.getURLLogin(), json);
 
                 Log.d("onSuccess", postResponse);
 
                 JSONObject response = new JSONObject(postResponse);
 
-                // cek apakah berhasil atau tidak
-                if (response.getInt("sukses") == 0 ) {
+                int suksesya = response.getInt("sukses");
+
+                 //cek apakah berhasil atau tidak
+                if (suksesya==0) {
 
                     return false;
 
@@ -111,18 +114,17 @@ public class IndexActivity extends AppCompatActivity {
                     /**
                      * menyimpan session login
                      */
-                    setSession.putString("status_login", response.getString("sukses"));
-                    setSession.putInt(link_url.TAG_IS_LOGIN, link_url.IS_LOGIN);
+                    setSession.putInt(link_url.TAG_IS_LOGIN, response.getInt("sukses"));
                     setSession.putString("email", response.getString("email"));
                     setSession.putString("nama", response.getString("name"));
                     setSession.apply();
-
                 }
 
             } catch (IOException e) {
                 Log.d("IOException", e.toString());
                 return false;
-            } catch (JSONException e) {
+            }
+            catch (JSONException e) {
                 Log.d("JSONException", e.toString());
                 return false;
             }
@@ -138,7 +140,7 @@ public class IndexActivity extends AppCompatActivity {
                 startActivity(utama);
                 finish();
             }else{
-                Toast.makeText(getApplicationContext(), "email atau password anda salah !!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "username atau password anda salah !!", Toast.LENGTH_LONG).show();
             }
         }
 
@@ -152,7 +154,7 @@ public class IndexActivity extends AppCompatActivity {
 
         final String email = emailEditText.getText().toString();
         if (!isValidEmail(email)) {
-            emailEditText.setError("masukan email dengan benar");
+            emailEditText.setError("Username tidak boleh kosong");
         }
 
         final String pass = passEditText.getText().toString();
@@ -170,16 +172,6 @@ public class IndexActivity extends AppCompatActivity {
             mAuthTask = new UserLoginTask(username, password, tokenID);
             mAuthTask.execute((Void) null);
 
- //           SharedPreferences.Editor setSession = session.edit();
-
-//            setSession.putString("status_login", "1");
-//            setSession.apply();
-
-//            Log.d("firebase","sukses buat akun");
-//
-//            Intent utama = new Intent(IndexActivity.this, MainActivity.class);
-//            startActivity(utama);
-//            finish();
         }
 
 
@@ -187,13 +179,10 @@ public class IndexActivity extends AppCompatActivity {
 
     // validating email id
     private boolean isValidEmail(String email) {
-        /*fungsi validasi email*/
-        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
+        if (email != null && email.length() >= 1) {
+            return true;
+        }
+        return false;
     }
 
     // validating password
