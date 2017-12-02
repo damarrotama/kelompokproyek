@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "345959667303",
+    "firebase_url": "https://kelompokproyek-c4a05.firebaseio.com",
+    "project_id": "kelompokproyek-c4a05",
+    "storage_bucket": "kelompokproyek-c4a05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345959667303:android:ef2e509c36ab9a7a",
+        "android_client_info": {
+          "package_name": "com.ghifa.mobile.kelompokproyek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345959667303-170d88klk69j8gq9ji98hiddr4itv424.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ghifa.mobile.kelompokproyek",
+            "certificate_hash": "24a43cf475c9687dc79c359f563f433c00c3f44d"
+          }
+        },
+        {
+          "client_id": "345959667303-hcmghpfks5leq1ke0ug8u7dieuvk2m74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3VvcmXK2l_L6nRABrwGzGjZcSL5cTz8Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345959667303-hcmghpfks5leq1ke0ug8u7dieuvk2m74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
