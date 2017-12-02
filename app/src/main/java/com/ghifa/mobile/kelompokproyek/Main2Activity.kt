@@ -104,6 +104,8 @@ class Main2Activity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                     //}
 
 
+
+
                 })
 
                 simpleAlert.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", {
